@@ -4,6 +4,12 @@ import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 
 class Modal extends React.Component {
+    static = {
+        closeModal: PropTypes.func,
+        url: PropTypes.string,
+    }
+
+
     closeModal = event => {
         if (event.currentTarget === event.target || event.code === 'Escape') {
         this.props.closeModal();

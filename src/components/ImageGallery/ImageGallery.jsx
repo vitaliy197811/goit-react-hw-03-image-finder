@@ -6,9 +6,7 @@ import css from './ImageGallery.module.css';
 const ImageGallery = ({ images, ...otherProps }) => (
     <section>
         <ul className={css.ImageGallery}>
-            {images.map(image => (
-                <ImageGalleryItem key={image.id} image={image} { ...otherProps } />
-            ))}
+                <ImageGalleryItem images={images} { ...otherProps } />
         </ul>
     </section>
 );
@@ -19,7 +17,6 @@ ImageGallery.prototypes = {
             id: PropTypes.number.isRequired,
         })
     ).isRequired,
-    otherProps: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
