@@ -4,11 +4,10 @@ import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 
 class Modal extends React.Component {
-    static = {
+    static propTypes = {
         closeModal: PropTypes.func,
         url: PropTypes.string,
-    }
-
+    };
 
     closeModal = event => {
         if (event.currentTarget === event.target || event.code === 'Escape') {
@@ -35,10 +34,5 @@ class Modal extends React.Component {
         );
     }
 }
-
-Modal.prototypes = {
-    url: PropTypes.string.isRequired,
-    closeModal: PropTypes.func.isRequired,
-};
 
 export default Modal;

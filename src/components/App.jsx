@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './App.module.css';
 import Searchbar from 'components/Searchbar/Searchbar';
-import fetchPage from 'components/pixabayApi';
+import fetchPage from 'pixabayApi';
 import Loader from 'components/Loader/Loader';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from 'components/Button/Button';
@@ -85,7 +85,9 @@ class App extends React.Component {
           />
         )}
         {loadMore && (<Button onClick={this.showLoadMore} />)}
-        {showModal && (<Modal closeModal={this.toggleShowModal} url={imageURL} />)}
+        {showModal && (<Modal 
+          closeModal={this.toggleShowModal} 
+          url={imageURL} />)}
       </div>
     );
   }

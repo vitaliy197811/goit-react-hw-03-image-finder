@@ -8,9 +8,9 @@ class Searchbar extends React.Component {
         search: '',
     };
 
-    static = {
-        onSubmit: PropTypes.func,
-    }
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired
+    };
 
     handleChange = e => {
         this.setState({ search: e.currentTarget.value.toLowerCase() });
@@ -43,9 +43,5 @@ class Searchbar extends React.Component {
         );
     }
 }
-
-Searchbar.prototypes = {
-    onSubmit: PropTypes.func.isRequired,
-};
 
 export default Searchbar;
