@@ -30,7 +30,7 @@ class App extends React.Component {
   };
   
   componentDidUpdate( prevProps, prevState) {
-    const { search, page } = this.state;
+    const { search, page, } = this.state;
     if (prevState.search !== search || prevState.page !== page) {
       this.setState({ loader: true, });
       fetchPage( search, page )
@@ -43,11 +43,13 @@ class App extends React.Component {
           return alert('No images found for your request');
         }
 
-        this.setState(prevState => ({
-          images: [...prevState.images, ...data.hits],
-          loader: false,
-          loadMore: page < Math.ceil(data.total / 12) ? true : false,
-        }));
+        data.hits.forEach(({ id, webformatURL, largeImageURL }) => {
+            this.setState(({ images }) => ({
+              images: [...images, { id, webformatURL, largeImageURL }],
+              loader: false,
+              loadMore: page < Math.ceil(data.total / 12) ? true : false,
+            }));
+        });
       })
       .catch(error => console.log(error));
     }
@@ -75,7 +77,6 @@ class App extends React.Component {
     return (
       <div className={css.App}>
         <Searchbar onSubmit={this.searchImage} />
-        {loader && (<Loader />)}
         {images.length > 0 && (
           <ImageGallery
             images={images}
@@ -84,6 +85,7 @@ class App extends React.Component {
             imagelAlt={this.addImagelAlt}
           />
         )}
+        {loader && (<Loader />)}
         {loadMore && (<Button onClick={this.showLoadMore} />)}
         {showModal && (<Modal 
           closeModal={this.toggleShowModal} 
