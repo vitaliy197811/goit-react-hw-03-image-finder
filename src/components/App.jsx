@@ -43,7 +43,7 @@ class App extends React.Component {
           return alert('No images found for your request');
         }
 
-        data.hits.forEach(({ id, webformatURL, largeImageURL }) => {
+        data.hits.map(({ id, webformatURL, largeImageURL }) => {
             this.setState(({ images }) => ({
               images: [...images, { id, webformatURL, largeImageURL }],
               loader: false,
