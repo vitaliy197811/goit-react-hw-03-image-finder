@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 import css from './Searchbar.module.css';
 
-class Searchbar extends React.Component {
+class Searchbar extends Component {
     state = {
         search: '',
     };

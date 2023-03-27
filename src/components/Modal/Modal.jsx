@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 
-class Modal extends React.Component {
+class Modal extends Component {
     static propTypes = {
         closeModal: PropTypes.func,
         url: PropTypes.string,

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import css from './App.module.css';
 import Searchbar from 'components/Searchbar/Searchbar';
 import fetchPage from 'pixabayApi';
@@ -7,7 +7,7 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 
-class App extends React.Component {
+class App extends Component {
   state = {
     search: '',
     images: [],
@@ -87,9 +87,7 @@ class App extends React.Component {
         )}
         {loader && (<Loader />)}
         {loadMore && (<Button onClick={this.showLoadMore} />)}
-        {showModal && (<Modal 
-          closeModal={this.toggleShowModal} 
-          url={imageURL} />)}
+        {showModal && (<Modal closeModal={this.toggleShowModal} url={imageURL} />)}
       </div>
     );
   }
